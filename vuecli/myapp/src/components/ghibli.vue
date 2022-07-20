@@ -4,6 +4,7 @@
     <button @click="getDatas">recup donnée</button>
     <div v-for="article in articles" v-bind:key="article.id">
       <h4>{{ article.original_title }} / {{ article.title }}</h4>
+
       <img v-bind:src="article.image" v-bind:alt="article.title" />
       <p>{{ article.description }}</p>
       <p>released in {{ article.release_date }}</p>
@@ -41,11 +42,10 @@ export default {
           const variable = this;
           data.forEach((people) => {
             people.people.forEach((person) => {
-              console.log(person);
               fetch(person)
                 .then((response) => response.json())
                 .then((data) => {
-                  variable.peoples.push(data);
+                  variable.peoples = data;
                 });
             });
           });
