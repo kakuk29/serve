@@ -1,8 +1,8 @@
 <template>
   <router-link to="/">Home </router-link>
-  <router-link to="/monCompo01">monCompo01 </router-link>
-  <router-link to="/monCompo02">monCompo02 </router-link>
-  <router-link to="/monCompo03">monCompo03 </router-link>
+  <router-link to="/monCompo01">Compo01 </router-link>
+  <router-link to="/monCompo02">Compo02 </router-link>
+  <router-link to="/monCompo03">Compo03 </router-link>
   <router-view/>
 </template>
 
@@ -20,6 +20,5 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
-  list-style: none;
 }
 </style>

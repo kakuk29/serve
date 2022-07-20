@@ -14,7 +14,7 @@
         name: 'monCompo02',
         data() {
             return {
-                msg: '',
+                msg: '02',
                 articles: [
                     'velo',
                     'bus',
