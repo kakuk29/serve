@@ -10,12 +10,10 @@
       <p>released in {{ article.release_date }}</p>
       <p>director: {{ article.director }} producer: {{ article.producer }}</p>
       <p>RT scorce: {{ article.rt_score }}</p>
-
       <h5>list of peoples</h5>
       <div v-for="people in peoples" :key="people.id">
         <a v-bind:href="people.url">{{ people.name }}</a>
       </div>
-
       <hr />
     </div>
   </div>
@@ -34,18 +32,18 @@ export default {
   },
   methods: {
     getDatas() {
+      // recuperation des datas depuis l'API ghibli
       fetch("https://ghibliapi.herokuapp.com/films")
         .then((response) => response.json())
         .then((data) => {
-          // console.log(data[0].people);
           this.articles = data;
-          const variable = this;
-          data.forEach((people) => {
-            people.people.forEach((person) => {
+          // forEach de forEach pour recuperer les informations de "people"
+          data.forEach((a) => {
+            a.people.forEach((person) => {
               fetch(person)
                 .then((response) => response.json())
                 .then((data) => {
-                  variable.peoples = data;
+                this.peoples = data;
                 });
             });
           });
