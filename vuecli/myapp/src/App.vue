@@ -1,16 +1,13 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App - AFPA"/>
+  <router-link to="/">Home </router-link>
+  <router-link to="/monCompo01">monCompo01 </router-link>
+  <router-link to="/monCompo02">monCompo02 </router-link>
+  <router-view/>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
   name: 'App',
-  components: {
-    HelloWorld
-  }
 }
 </script>
 
@@ -22,5 +19,6 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+  list-style: none;
 }
 </style>
