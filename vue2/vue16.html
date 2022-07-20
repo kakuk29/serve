@@ -1,0 +1,24 @@
+<script src="https://unpkg.com/vue@3"></script>
+<div id="components-demo">
+  <button-counter></button-counter>
+</div>
+
+<script>
+// Créer un application Vue 
+const app = Vue.createApp({})
+
+//Définir un composant global -> button-counter
+app.component('button-counter', {
+  data() {
+    return {
+      count: 0
+    }
+  },
+  template: `
+    <button v-on:click="count++">
+      Tu as clické {{ count }} fois.
+    </button>`
+})
+
+app.mount('#components-demo')
+</script>

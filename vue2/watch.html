@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.27.2/dist/axios.min.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      pose ta question :
+      <input type="text" v-model="question"><br>
+      <p>{{reponse}}</p>
+      <img v-bind:src="image">
+    </div>
+  </body>
+
+  <script>
+    new Vue({
+      el: "#app",
+      data: {
+        question: "",
+        reponse: "j'attends votre question",
+        image: null
+      },
+      method: {},
+      watch: {
+        question: function() {
+          let ov = this
+          if(this.question.indexOf("?") > -1) {
+            axios.get("https://yesno.wtf/api")
+              .then(function(response) {
+                ov.reponse = response.data.answer
+                ov.image = response.data.image
+              })
+          }else {
+            this.reponse = "pas de question ?"
+          }
+        }
+      }
+    });
+  </script>
+</html>

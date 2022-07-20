@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://unpkg.com/vue@3"></script>
+    <title>Document</title>
+    <style>
+      .component1 {
+        display: block;
+        background-color: chartreuse;
+        height: 250px;
+        text-align: center;
+        color: white;
+        padding-top: 50px;
+      }
+      .component2 {
+        display: block;
+        background-color: red;
+        height: 250px;
+        text-align: center;
+        color: white;
+        padding-top: 50px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="root"></div>
+  </body>
+  <script>
+    // 1er composant
+    Vue.component("component1", {
+      props: ["labeltext"],
+      template: `<div class="component1">
+                  <h1>tu as clické {{labeltext}} fois</h1>
+                </div>`,
+    });
+
+    Vue.component("component1", {
+      data() {
+        return {
+          count: 0,
+        };
+      },
+      template: `<div class="component2">
+                  <button @click="incremente">{{count}}</button>
+                </div>`,
+      methods: {
+        incremente() {
+          this.count += 1;
+          this.$emit("setcounter", this.count);
+        },
+      },
+    })
+
+    // 2ème composant
+  </script>
+</html>

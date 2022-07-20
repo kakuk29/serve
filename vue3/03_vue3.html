@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://unpkg.com/vue@3"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <h1 v-once>{{ titre }}</h1>
+      <h1 v-bind:title="message">{{ titre}}</h1>
+      <h3 v-once>{{ titre }}</h3>
+      <p>{{ paragraphe }}</p>
+      <p v-if="seen">tu me vois ou pas</p>
+      <button v-on:click="modiftitre">modifier</button>
+    </div>
+  </body>
+  <script>
+    const { createApp } = Vue;
+    const app = createApp({
+      data() {
+        return {
+          titre: "Bonjour Vue!",
+          paragraphe: "un paragraphe de test",
+          seen: false,
+          message: "Important !",
+        };
+      },
+      methods: {
+        modiftitre: function() {
+          this.titre += " ne modifie que celui-ci car on à mis le premier titre en v-once";
+        },
+      },
+    }).mount("#app");
+  </script>
+</html>

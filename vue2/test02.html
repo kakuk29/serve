@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h2>{{ counter }}</h2>
+        <h3>{{ resultat }}</h3>
+        <!-- <p v-on:mouseover="hover">
+            lorem ipsum lsodzd dzedz dzez dz zdezd  <span>coucou</span> dcdcdc
+        </p> -->
+        <!-- {{ nomDuTag }} -->
+        <button @click="incremente">incrémente</button>
+        <!-- <button @click="incremente(2,$event)">incrémente de 2</button> -->
+        <button @click="decremente">décrémente</button>
+    </div>
+
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+              counter: 0 ,
+              etatCounter: "positif",
+              nomDuTag: "rien"
+            },
+            computed: {
+                resultat: function(){
+                   return this.counter < 0 ? 'negatif' : 'positif'
+                }
+            },
+            methods: {
+               incremente: function(){
+                this.counter++
+               },
+               incrementeStep: function(nb,event) {
+                this.counter += nb 
+               },
+               decremente: function() {
+                this.counter--
+               },
+               hover: function(event) {
+               // console.log(event) ;
+               // $event est un mot clé reserve par vuejs
+                this.nomDuTag = event.target.tagName 
+               } 
+            }
+        })
+    </script>
+</body>
+</html>

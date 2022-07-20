@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <mycomponent ></mycomponent>
+    </div>
+</body>
+<script>
+    Vue.component("mycomponent", {
+        props: {
+            titre: {
+                type: Number,
+                required: true,
+                default: "Hello From Data!" // si pas de valeur par defaut il y a un warning
+            }
+        },
+        template: "<div>{{titre}}</div>"
+    })
+
+    new Vue({
+        el: "#app"
+    })
+
+//
+// les props peuvent etre un objet avec valeur comme dans un tableau avec des contraintes
+// si pb de type il y aura un warning
+// plusieur type possible [String, Number, Boolean, Object, Array, Function]
+</script>
+</html>

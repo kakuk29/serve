@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <h2>{{counter}}</h2>
+        <p v-on:mouseover>lorem ipsum</p>
+        {{nomDuTag}}
+        <button v-on:click="incremente">incrémente</button>
+        <button v-on:click="incremente(2),$event">incrémente de 2</button>
+      </div>
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            counter: 0,
+            etatCounter: true,
+            nomDuTag: "rien"
+        },
+        methods: {
+            incremente: function() {
+                this.counter ++
+                this.etatCounter = this.counter > 0 ? "positive" : "negative"
+            },
+            incremente: function(n) {
+                this.counter += n
+                this.etatCounter = this.counter > 0 ? "positive" : "negative"
+            }
+            
+        }
+    });
+</script>
+</html>

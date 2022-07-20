@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <mycomponent montitre="Hello i am a prop componant" montext="Auttre texte de clicktest"></mycomponent>
+    </div>
+</body>
+<script>
+    Vue.component("mycomponent", {
+        props: ['montitre', 'montext'],
+        template: '<h3 v-on:click=clicktest>{{montitre}}</h3>',
+        methods: {
+            clicktest: function() {
+                console.log(this.montext)
+            }
+        }
+    })
+
+    new Vue({
+        el: "#app"
+    })
+
+    // les prop sont des propriéter qui peuvent être utilisées comme des datas
+    // et sont des variables spécifiques a nos components (propriété interne au composant)
+    // les propos sont comme des datas mais pourront être utilisées dans les composant enfants
+    // les data sont privées.
+
+    // prop vs data
+    // https://michaelnthiessen.com/vue-props-vs-data/
+    // je rajoute la propriété mytext dans mon component
+    // et un event su click dans mon template
+    // avec les composant vous inventez votre propre langague HTML
+</script>
+</html>
