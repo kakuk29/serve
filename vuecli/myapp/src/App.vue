@@ -2,6 +2,7 @@
   <router-link to="/">Home </router-link>
   <router-link to="/monCompo01">monCompo01 </router-link>
   <router-link to="/monCompo02">monCompo02 </router-link>
+  <router-link to="/monCompo03">monCompo03 </router-link>
   <router-view/>
 </template>
 

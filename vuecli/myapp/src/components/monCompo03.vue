@@ -1,6 +1,7 @@
 <template>
     <div>
         <h3>mon Composant {{ msg }}</h3>
+        <button @click="getDatas">recup donnée</button>
         <ul>
             <li v-for="unarticle in articles" v-bind:key="unarticle">
                 {{ unarticle }}
@@ -10,16 +11,18 @@
     </div>
 </template>
 <script>
+    import axios from 'axios'
+
     export default {
-        name: 'monCompo02',
+        name: 'monCompo03',
         data() {
+            axios.get('https://jsonplaceholder.typicode.com/posts')
+                .then(response => {
+                    this.articles = response.data
+                })
             return {
-                msg: '',
-                articles: [
-                    'velo',
-                    'bus',
-                    'train'
-                ]
+                msg: '03',
+                articles: []
             }
         }
     }
