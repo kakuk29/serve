@@ -11,6 +11,7 @@
       <p>director: {{ article.director }} producer: {{ article.producer }}</p>
       <p>RT scorce: {{ article.rt_score }}</p>
       <h5>list of peoples</h5>
+      
       <div v-for="people in peoples" :key="people.id">
         <a v-bind:href="people.url">{{ people.name }}</a>
       </div>
@@ -36,6 +37,7 @@ export default {
       fetch("https://ghibliapi.herokuapp.com/films")
         .then((response) => response.json())
         .then((data) => {
+
           this.articles = data;
           // forEach de forEach pour recuperer les informations de "people"
           data.forEach((a) => {
