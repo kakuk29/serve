@@ -5,8 +5,8 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start:server": "nodemon server.js --ignore '/client/'",
-    "start:client": "nodemon client.js --ignore '/server/'"
+    "start:server": "node server.js --ignore '/client/'",
+    "start:client": "node client.js --ignore '/server/'"
   },
   "repository": {
     "type": "git",
