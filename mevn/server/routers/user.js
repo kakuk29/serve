@@ -27,4 +27,4 @@ router.get('/user/:id', (req, res) => {
     })
 })
 
-module.exports = Router;
+module.exports = router;

@@ -1,6 +1,6 @@
 require('./db/connect')
 const express = require('express');
-const UserRouter = require('./routers/user');
+const UserRouter = require('./routers/user')
 
 const app = express();
 const port = 3000;
