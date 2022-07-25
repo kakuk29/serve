@@ -2,10 +2,10 @@
 // npm i --save express mongoose cors jsonwebtoken bcryptjs path
 //------
 const dotenv = require("dotenv");
-const parth = require("path");
+const path = require("path");
 const jwt = require("jsonwebtoken");
 const mongoose = require("mongoose");
-const bcryptjs = require("bcryptjs");
+var bcrypt = require('bcryptjs');
 const cors = require("cors");
 
 const express = require("express");
@@ -28,13 +28,19 @@ app.use(express.json());
 app.use(express.static("public"));
 
 app.get('/', (req, res) => {
-    res.sendFile(parth.join(__dirname, 'public', 'index.html'));
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 */
 
-var db = mongoose.connect("mongodb://localhost/afpauser");
+var db = mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true, useUnifiedTopology: true }, (err) => {
+    if (err) {
+        console.log(err);
+    } else {
+        console.log("Connected to the database");
+    }
+});
 
-function genreateAccesToken(user) {
+function generateAccessToken(user){
   return jwt.sign(user, process.env.TOKEN_SECRET, { expiresIn: "50m" });
 }
 
@@ -68,8 +74,10 @@ function authenticateToken(req, res, next) {
   });
 }
 
-app.post("/user/signup", (req, res) => {
+app.post("/user/signup", (req, res) => 
+{
   console.log(req.body);
+  // si le user existe
   User.findOne({ email: req.body.email }).exec((err, user) => {
     if (err) {
       res.status(500).send({ message: err });
@@ -121,5 +129,6 @@ app.get("/api/orders", authenticateToken, function (req, res) {
 });
 
 
-app.listen(8092);
-console.log("8092");
+app.listen(8092, () => {
+  console.log("Server started on http://localhost:8092");
+})

@@ -8,5 +8,5 @@ var UserSchema = new Schema({
     password: String,
 });
 
-mongoose.model("User", UserSchema);
+mongoose.model("users", UserSchema);
 // User est le nom de la collection dans mongodb en minuscules
