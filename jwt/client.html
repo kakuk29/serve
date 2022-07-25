@@ -13,11 +13,15 @@
     <input id="password" placeholder="mot de pass" type="password" /> <input type="checkbox" onclick="myFunction()" /><br>
     <button>Go</button>
     <button id="test">test</button>
+    <button id="deco">deconnexion</button>
 
 
 
     <script>
       document.getElementsByTagName("button")[0].addEventListener("click", login);
+      document.getElementById("test").addEventListener("click", test);
+      document.getElementById("deco").addEventListener("click", deconnexion);
+
 
       function login() {
         let email = document.getElementById("email").value;
@@ -36,7 +40,7 @@
           });
       }
 
-      document.getElementById("test").addEventListener("click", test);
+      
 
       function test() {
         var tokenFromLocalStorage = localStorage.getItem("token");
@@ -52,7 +56,10 @@
         });
       }
 
-
+      function deconnexion() {
+        localStorage.removeItem("token");
+        console.log("deconnexion");
+      }
 
 
 
