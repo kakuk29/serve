@@ -8,8 +8,8 @@
     <title>Document</title>
 </head>
 <body>
-    <input type="text" id="email">
-    <input type="text" id="password">
+    <input id="email" placeholder="email">
+    <input id="password" placeholder="pass">
     <button>Login</button>
     <script>
         document.getElementsByTagName('button')[0].addEventListener('click', login());
@@ -17,7 +17,10 @@
         function login(){
             let email = document.getElementById('email').value;
             let password = document.getElementById('password').value;
-            axios.post("user/login",{ email: "...", password: "..." })
+            axios.post("http://localhost:8092/user/login", {
+                email: email,
+                password: password
+            })
             .then( Response => {
                 console.log(Response.data.token);
                 localStorage.setItem("token", Response.data.token);

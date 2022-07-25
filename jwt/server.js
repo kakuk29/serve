@@ -11,12 +11,9 @@ const cors = require("cors");
 const express = require("express");
 // recupération du contenue .env (ici TOKEN_SECRET)
 dotenv.config();
-
 const app = express();
-
-require("./models/User");
-
-var User = mongoose.model("users");
+require("./models/user.js");
+var User = mongoose.model("User");
 
 app.use(cors());
 //pour pouvoir interpréter le req.body
@@ -61,8 +58,13 @@ exiresIn options
 function authenticateToken(req, res, next) {
   // const token = req.headers['x-access-token']
   console.log(req.headers);
+  /*
+  pour postman dans le req.headers.authorization j'ai ceci :
+  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjYyZGU2ZWU1NjE1NGM4YjNiZGI1ODAyMyIsImVtYWlsIjoiam9uaTRAZ21haWwuY29tIiwibm9tIjoiam9uaTQiLCJwcmVub20iOiJiaWdvdWQiLCJwYXNzd29yZCI6IiQyYSQxMCR4UTJneVdNdDl6cW9pclZCREtsaVF1aGFHb3pqdmRjcjFOSDdVYlBWUEZla2h1alNkMDJKaSIsIl9fdiI6MH0sImlhdCI6MTY1ODc0NTE1MCwiZXhwIjoxNjU4NzQ4MTUwfQ.BZxS8o550wDXRj3EP05hGVTUaA2d-lBN5cuvLsazI3s
+  je doit donc spliter le Bearer et le token et le stocker dans une variable
+  */
   const token = req.headers.authorization.split(" ")[1];
-  //const token = req.headers.authorization
+  // const token = req.headers.authorization
   console.log("TOKEN", token);
   if (token == null) {
     return res.sendStatus(401);
@@ -70,7 +72,7 @@ function authenticateToken(req, res, next) {
   jwt.verify(token, process.env.TOKEN_SECRET, (err, user) => {
     if (err) return res.sendStatus(403);
     req.user = user;
-    next(); // pass the execution to the next middleware
+    next();
   });
 }
 
@@ -90,7 +92,8 @@ app.post("/user/signup", (req, res) =>
       var hash = bcrypt.hashSync(req.body.password, salt);
       // creation de l'objet user à partir de la modelisation User mongoose
       var user = new User({
-        name: req.body.name,
+        nom: req.body.nom,
+        prenom: req.body.prenom,
         password: hash,
         email: req.body.email,
       });
