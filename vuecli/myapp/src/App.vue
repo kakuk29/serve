@@ -1,4 +1,11 @@
 <template>
+  <div>
+    <!-- Nom: {{ $store.state.nom }} <br>
+    Prénom: {{ $store.state.prenom }} <br>
+    Age: {{ $store.state.age }} <br> -->
+
+    {{ $store.getters.fullName}}
+  </div>
   <router-link to="/">Home </router-link>
   <router-link to="/monCompo01">Compo01 </router-link>
   <router-link to="/monCompo02">Compo02 </router-link>
