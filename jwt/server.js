@@ -88,7 +88,7 @@ app.post("/user/signup", (req, res) => {
       });
       user.save(function (err) {
         if (err) return handleError(err);
-        res.status(200).send(user);
+        res.status(200).send(user); 
       });
     }
   }); // end exec
