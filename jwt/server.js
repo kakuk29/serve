@@ -32,9 +32,7 @@ app.get('/', (req, res) => {
 var db = mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true, useUnifiedTopology: true }, (err) => {
     if (err) {
         console.log(err);
-    } else {
-        console.log("Connected to the database");
-    }
+    } 
 });
 
 function generateAccessToken(user){
