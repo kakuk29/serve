@@ -1,14 +1,19 @@
 require('./db/connect')
-const express = require('express');
 const cors = require('cors');
-const UserRouter = require('./routers/user')
+const dotenv = require("dotenv");
+const express = require('express')
+dotenv.config(); 
+
 
 const app = express();
-const port = 8080;
+app.set('port', process.env.PORT || 3000);
+const UserRouter = require('./router/user');
 
 app.use(cors());
 app.use(express.json());
-app.use(UserRouter)
+app.use(UserRouter);
 
 
-app.listen(port, () => console.log(`http://localhost:${port}, press Ctrl+C to stop.`))
+app.listen(app.get('port'), () => {
+    console.log(`http://localhost:${app.get('port')}, press Ctrl+C to quit`);
+});

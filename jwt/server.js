@@ -7,8 +7,8 @@ const jwt = require("jsonwebtoken");
 const mongoose = require("mongoose");
 var bcrypt = require('bcryptjs');
 const cors = require("cors");
-
 const express = require("express");
+
 // recupération du contenue .env (ici TOKEN_SECRET)
 dotenv.config();
 const app = express();

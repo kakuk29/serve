@@ -1,6 +1,9 @@
 <template>
-    <main>
+    <header>
         <h1>{{ title }}</h1>
+    </header>
+    <main>
+        
     </main>
 </template>
 
