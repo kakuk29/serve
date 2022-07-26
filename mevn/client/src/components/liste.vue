@@ -24,7 +24,7 @@ export default {
   },
   methods: {
     getDatas() {
-      fetch("http://localhost:3000/users")
+      fetch("http://localhost:8080/users")
         .then((response) => response.json())
         .then((data) => {
             console.log(data);
