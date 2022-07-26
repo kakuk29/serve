@@ -11,4 +11,4 @@ app.use(express.json());
 app.use(UserRouter)
 
 
-app.listen(port, () => console.log(`application lancé sur l'adresse : http://localhost:${port}, press Ctrl+C to stop, or Ctrl+Shift+C to quit.`))
+app.listen(port, () => console.log(`http://localhost:${port}, press Ctrl+C to stop.`))
