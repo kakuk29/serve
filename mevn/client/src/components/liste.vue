@@ -5,8 +5,9 @@
     </div>
   </header>
   <main>
+    <button @click="getDatas">recup donnée</button>
     <h3>
-        <button @click="getDatas">recup donnée</button>
+        {{ liste.firstname }}
     </h3>
   </main>
 </template>
@@ -27,6 +28,7 @@ export default {
         .then((response) => response.json())
         .then((data) => {
             console.log(data);
+            this.liste = data;
         });
     },
   },
