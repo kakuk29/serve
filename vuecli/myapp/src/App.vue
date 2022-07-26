@@ -5,6 +5,9 @@
     Age: {{ $store.state.age }} <br> -->
 
     {{ $store.getters.fullName}}
+    <button @click="incrementAge">+</button>
+    <button @click="plus(5)">+5</button>
+    <button @click="actplus(10)">+10+1</button>
   </div>
   <router-link to="/">Home </router-link>
   <router-link to="/monCompo01">Compo01 </router-link>
@@ -17,6 +20,17 @@
 <script>
 export default {
   name: 'App',
+  methods: {
+    incrementAge() {
+      this.$store.commit('incrementAge')
+    },
+    plus(x) {
+      this.$store.commit('AJOUTE_X', x)
+    },
+    actplus(x) {
+      this.$store.dispatch('updateAge', x)
+    }
+  }
 }
 </script>
 
