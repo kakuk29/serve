@@ -14,6 +14,4 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/api/user', userRoutes);
 
 
-app.listen(app.get('port'), () => {
-    console.log(`http://localhost:${app.get('port')}, press Ctrl+C to quit`);
-}); 
+app.listen(app.get('port'), () => { console.log(`http://localhost:${app.get('port')}, press Ctrl+C to quit`) });
