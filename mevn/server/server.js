@@ -1,12 +1,19 @@
-require('./db/connect')
-const express = require('express');
-const UserRouter = require('./routers/user')
-
+const express = require('express')
+const cors = require('cors');
+const dotenv = require("dotenv");
+dotenv.config(); 
+require('./db/config')
 const app = express();
-const port = 3000;
+app.set('port', process.env.PORT || 3000);
 
+const apiRoutes = require('./router/api');
+const userRoutes = require('./router/user');
+
+app.use(cors());
 app.use(express.json());
-app.use(UserRouter)
+app.use(express.urlencoded({ extended: true }));
+app.use('/api', apiRoutes);
+app.use('/auth', userRoutes);
 
 
-app.listen(port, () => console.log(`application lancé sur l'adresse : http://localhost:${port}, press Ctrl+C to stop, or Ctrl+Shift+C to quit.`))
+app.listen(app.get('port'), () => { console.log(`http://localhost:${app.get('port')}, press Ctrl+C to quit`) });

@@ -4,9 +4,10 @@
     Prénom: {{ $store.state.prenom }} <br>
     Age: {{ $store.state.age }} <br> -->
 
-    {{ $store.getters.fullName }}
-
-    <button @click="$store.commit('incrementAge')">++</button>
+    {{ $store.getters.fullName}}
+    <button class="btn btn-primary" @click="incrementAge">+</button>
+    <button class="btn btn-secondary" @click="plus(5)">+5</button>
+    <button class="btn btn-primary" @click="actplus(10)">+10+1</button>
   </div>
   <router-link to="/">Home </router-link>
   <router-link to="/monCompo01">Compo01 </router-link>
@@ -18,13 +19,19 @@
 
 <script>
 export default {
-  name: "App",
-  method: {
-    increment: function () {
-      this.$store.commit("increment");
+  name: 'App',
+  methods: {
+    incrementAge() {
+      this.$store.commit('incrementAge')
     },
-  },
-};
+    plus(x) {
+      this.$store.commit('AJOUTE_X', x)
+    },
+    actplus(x) {
+      this.$store.dispatch('updateAge', x)
+    }
+  }
+}
 </script>
 
 <style>
