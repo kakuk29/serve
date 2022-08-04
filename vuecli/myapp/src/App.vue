@@ -4,20 +4,27 @@
     Prénom: {{ $store.state.prenom }} <br>
     Age: {{ $store.state.age }} <br> -->
 
-    {{ $store.getters.fullName}}
+    {{ $store.getters.fullName }}
+
+    <button @click="$store.commit('incrementAge')">++</button>
   </div>
   <router-link to="/">Home </router-link>
   <router-link to="/monCompo01">Compo01 </router-link>
   <router-link to="/monCompo02">Compo02 </router-link>
   <router-link to="/monCompo03">Compo03 </router-link>
   <router-link to="/ghibli">ghibli </router-link>
-  <router-view/>
+  <router-view />
 </template>
 
 <script>
 export default {
-  name: 'App',
-}
+  name: "App",
+  method: {
+    increment: function () {
+      this.$store.commit("increment");
+    },
+  },
+};
 </script>
 
 <style>
