@@ -15,6 +15,10 @@ const store = createStore({
         fullName: (state) => {
             return `${state.prenom} ${state.nom} âgé de ${state.age} ans`
         }
+    }, mutations: {
+        incrementAge(state) {
+            state.age++
+        }
     }
 })
 
