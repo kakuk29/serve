@@ -6,14 +6,14 @@ require('./db/config')
 const app = express();
 app.set('port', process.env.PORT || 3000);
 
-const apiRoutes = require('./router/api');
-const userRoutes = require('./router/user');
+const apiRouter = require('./routes/api');
+const userRouter = require('./routes/user');
 
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use('/api', apiRoutes);
-app.use('/auth', userRoutes);
 
+app.use('/api', apiRouter);
+app.use('/user', userRouter);
 
 app.listen(app.get('port'), () => { console.log(`http://localhost:${app.get('port')}, press Ctrl+C to quit`) });

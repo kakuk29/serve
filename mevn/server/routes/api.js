@@ -4,5 +4,5 @@ const apictrl = require("../controllers/api");
 
 router.get("/", apictrl.getUser);
 
-module.exports = apiRouter;
+module.exports = router;
 
