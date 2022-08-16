@@ -14,7 +14,7 @@
   <router-link to="/monCompo02">Compo02 </router-link>
   <router-link to="/monCompo03">Compo03 </router-link>
   <router-link to="/ghibli">ghibli </router-link>
-  <router-view/>
+  <router-view />
 </template>
 
 <script>

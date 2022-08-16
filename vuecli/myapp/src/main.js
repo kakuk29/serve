@@ -45,6 +45,6 @@ const store = createStore({
             context.commit('AJOUTE_X',x)
         }
     }
-})
+});
 
-createApp(App).use(store).use(router).mount('#app')
+createApp(App).use(store).use(router).mount("#app");
