@@ -5,9 +5,5 @@
 }
 
 #cadre {
-  border: $border;
-}
-
-#texte {
-  font-family: $texte;
+  border: $border solid $primary_color;
 }
