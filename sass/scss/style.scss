@@ -1,0 +1,10 @@
+// le compilateur recherchera automatiquement _variables.scss et _mixins.scss
+@use "variables" as *;
+@use "colors" as *;
+
+
+p {
+  color: $primary_color;
+  font-family: $texte;
+  border: $border solid $primary_color;
+}

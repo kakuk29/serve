@@ -1,0 +1,40 @@
+/* 
+
+--------------- VARIABLES ---------------
+
+# Sass est un langage de programmation. A ce titre, il met à notre disposition 
+  la possibilité d'utiliser des variables. Il nous suffit de déclarer un nom de variable 
+  et de lui affecter une valeur de propriété CSS (couleur, bordure, taille de texte...), 
+  puis de l'appeler dans notre code.
+# Nous déclarons une variable en utilisant le signe $ 
+
+*/
+
+$couleur-primaire: #45a29e;
+$couleur-carre2: #0b0c10;
+$couleur-carre3: #c5c6c7;
+$texte: 1rem;
+$bordure: 1px solid $couleur-primaire;
+
+/* 
+
+--------------- BOUCLE (@each) ---------------
+
+# Nous n'allons pas voir toutes les fonctions incluses dans Sass, 
+  mais il en est une qui est intéressante pour les media queries 
+  vues juste avant.
+  Il s'agit des boucles, qui vont nous permettre de définir différentes 
+  valeurs en passant plusieurs fois sur les différentes propriétés.
+# Par exemple, si nous définissons différents breakpoints à 576, 768, 992 et 1200px, 
+  et que nous souhaitons un container qui fasse 80% de cette largeur, nous utiliserons 
+  donc le code suivant
+
+*/
+
+// Nous définissons les différents breakpoints
+$grille: (
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+);

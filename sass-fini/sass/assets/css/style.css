@@ -1,0 +1,256 @@
+@charset "UTF-8";
+/* 
+
+--------------- VARIABLES ---------------
+
+# Sass est un langage de programmation. A ce titre, il met à notre disposition 
+  la possibilité d'utiliser des variables. Il nous suffit de déclarer un nom de variable 
+  et de lui affecter une valeur de propriété CSS (couleur, bordure, taille de texte...), 
+  puis de l'appeler dans notre code.
+# Nous déclarons une variable en utilisant le signe $ 
+
+*/
+/* 
+
+--------------- BOUCLE (@each) ---------------
+
+# Nous n'allons pas voir toutes les fonctions incluses dans Sass, 
+  mais il en est une qui est intéressante pour les media queries 
+  vues juste avant.
+  Il s'agit des boucles, qui vont nous permettre de définir différentes 
+  valeurs en passant plusieurs fois sur les différentes propriétés.
+# Par exemple, si nous définissons différents breakpoints à 576, 768, 992 et 1200px, 
+  et que nous souhaitons un container qui fasse 80% de cette largeur, nous utiliserons 
+  donc le code suivant
+
+*/
+/* 
+
+--------------- MIXINS ---------------
+
+# Les "mixins" sont des ensembles de propriétés CSS 
+  qui peuvent être utilisées à plusieurs endroits de 
+  notre code dans des contextes différents.
+  Si nous avons des répétitions de propriétés, nous pouvons 
+  les rassembler sous la forme d'un "mixin" unique et donc 
+  réduire la taille de notre code et faciliter sa maintenance.
+# Nous créons un mixin appelé carre qui prend une valeur dans $cote
+  et un autre appelé transform qui prend une valeur dans $propriete
+
+*/
+/* 
+
+--------------- EXTEND (Extension) ---------------
+
+# En complément des "mixins" nous avons les extensions, ou "extend", 
+  qui permettent de rassembler un certain nombre de propriétés fixes 
+  qui se répètent pour plusieurs sélecteurs CSS.
+# Nous créeons une extension appelé %center 
+
+*/
+#carre4 #carre5, #carre6 #carre7 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* 
+
+--------------- PARTIALS ---------------
+
+# Sass, tout comme le CSS, permet d'importer d'autres fichiers 
+  au moyen de la directive @use. Ce qui nous permet de découper
+  nos fichiers SCSS en plusieurs parties.
+# La convention demande que le nom commence par un underscore (_), 
+  nous l'appellerons donc "_body.scss". 
+
+*/
+#couleur {
+  color: #45a29e;
+}
+
+#cadre {
+  border: 1px solid #45a29e;
+}
+
+#texte {
+  font-size: 1rem;
+}
+
+/* 
+
+--------------- NESTING (Imbrication) ---------------
+
+# L'un des grands intérêts de l'utilisation de Sass est la possibilité 
+  d'imbriquer les sélecteurs afin d'obtenir une structure très proche de 
+  celle de notre page HTML.
+
+*/
+p {
+  font-size: 1rem;
+}
+p span {
+  font-weight: bold;
+}
+p span a {
+  text-decoration: none;
+}
+p span a:hover {
+  /*
+  # Exemple css du hover : 
+    a:hover {
+      color: green;
+      }
+  # Dans ce cas précis, il n'y a pas d'espace avant ":hover". 
+    Nous allons donc devoir préciser à Sass que nous souhaitons "coller" 
+    le parent et l'enfant dans la structure imbriquée. Nous avons pour 
+    ce faire l'opérateur "&" qui nous permet de répondre à cette contrainte. 
+  # L'opérateur "&" permet de répéter le sélecteur parent, ici "a" 
+
+  */
+  color: #45a29e;
+}
+
+/* 
+
+--------------- MIXINS ---------------
+
+# Les "mixins" sont des ensembles de propriétés CSS 
+  qui peuvent être utilisées à plusieurs endroits de 
+  notre code dans des contextes différents.
+  Si nous avons des répétitions de propriétés, nous pouvons 
+  les rassembler sous la forme d'un "mixin" unique et donc 
+  réduire la taille de notre code et faciliter sa maintenance.
+# Nous utilisons la règle @include pour faire appel à nos mixins carre() et transform() 
+
+*/
+#carre1 {
+  width: 200px;
+  height: 200px;
+  background: #45a29e;
+  -webkit-transform: translate(200px);
+  -ms-transform: translate(200px);
+  transform: translate(200px);
+}
+
+#carre2 {
+  width: 400px;
+  height: 400px;
+  background: #0b0c10;
+}
+
+#carre3 {
+  width: 500px;
+  height: 500px;
+  background: #c5c6c7;
+}
+
+/* 
+
+--------------- EXTEND (Extension) ---------------
+
+# En complément des "mixins" nous avons les extensions, ou "extend", 
+  qui permettent de rassembler un certain nombre de propriétés fixes 
+  qui se répètent pour plusieurs sélecteurs CSS.
+# Nous utilisons la règle @extend pour faire appel à notre extension %centrer
+
+*/
+#carre4 {
+  position: relative;
+  width: 500px;
+  height: 500px;
+  background: #45a29e;
+}
+#carre4 #carre5 {
+  width: 250px;
+  height: 250px;
+  background: #0b0c10;
+}
+
+#carre6 {
+  position: relative;
+  width: 800px;
+  height: 800px;
+  background: #c5c6c7;
+}
+#carre6 #carre7 {
+  width: 350px;
+  height: 350px;
+  background: yellowgreen;
+}
+
+/* 
+
+--------------- MEDIA QUERIES ---------------
+
+# Nous pouvons, bien sûr, utiliser les media queries avec Sass.
+  Leur écriture permettra de connaître exactement le contexte dans 
+  lequel elles s'appliqueront.
+# Ainsi, si nous souhaitons modifier la taille de base de la police 
+  de caractères en fonction de la résolution, nous écrirons ceci en SCSS
+
+*/
+body {
+  font-size: 1rem;
+}
+@media screen and (min-width: 768px) {
+  body {
+    font-size: 1.4rem;
+  }
+}
+@media screen and (min-width: 1200px) {
+  body {
+    font-size: 1.6rem;
+  }
+}
+
+/* 
+
+--------------- BOUCLE (@each) ---------------
+
+# Nous n'allons pas voir toutes les fonctions incluses dans Sass, 
+  mais il en est une qui est intéressante pour les media queries 
+  vues juste avant.
+  Il s'agit des boucles, qui vont nous permettre de définir différentes 
+  valeurs en passant plusieurs fois sur les différentes propriétés.
+# Nous utilisons la règle @each pour boucler nos breakpoints 
+
+*/
+@media screen and (min-width: 576px) {
+  .container {
+    width: 460.8px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .container {
+    width: 614.4px;
+  }
+}
+@media screen and (min-width: 992px) {
+  .container {
+    width: 793.6px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .container {
+    width: 960px;
+  }
+}
+/* 
+
+--------------- PARTIALS ---------------
+
+# Sass, tout comme le CSS, permet d'importer d'autres fichiers 
+  au moyen de la directive @use.
+# Style.scss nous permet d'importer tous nos partials pour les 
+  compiler en un fichier style.css. Si nous indiquons pas dans 
+  le ficher styles.css les partials à utiliser, ils ne seront
+  jamais compilés. C'est un peu la maison mère de des autres 
+  fichiers scss.
+# Ce qui nous permet d'obtenir une syntaxe simple et courte, 
+  tout l'intérêt de Sass.
+
+*/
+
+/*# sourceMappingURL=style.css.map */

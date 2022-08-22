@@ -1,0 +1,13 @@
+@use "variables" as *;
+
+#couleur {
+  color: $primary_color;
+}
+
+#cadre {
+  border: $border;
+}
+
+#texte {
+  font-family: $texte;
+}

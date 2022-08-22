@@ -1,0 +1,46 @@
+@use "variables" as *;
+
+/* 
+
+--------------- MEDIA QUERIES ---------------
+
+# Nous pouvons, bien sûr, utiliser les media queries avec Sass.
+  Leur écriture permettra de connaître exactement le contexte dans 
+  lequel elles s'appliqueront.
+# Ainsi, si nous souhaitons modifier la taille de base de la police 
+  de caractères en fonction de la résolution, nous écrirons ceci en SCSS
+
+*/
+
+body {
+  // Taille de base pour mobile
+  font-size: $texte;
+  @media screen and (min-width: 768px) {
+    font-size: $texte * 1.4;
+  }
+  @media screen and (min-width: 1200px) {
+    font-size: $texte * 1.6;
+  }
+}
+
+/* 
+
+--------------- BOUCLE (@each) ---------------
+
+# Nous n'allons pas voir toutes les fonctions incluses dans Sass, 
+  mais il en est une qui est intéressante pour les media queries 
+  vues juste avant.
+  Il s'agit des boucles, qui vont nous permettre de définir différentes 
+  valeurs en passant plusieurs fois sur les différentes propriétés.
+# Nous utilisons la règle @each pour boucler nos breakpoints 
+
+*/
+
+// Nous bouclons sur les breakpoints
+@each $nom, $breakpoint in $grille {
+  @media screen and (min-width: $breakpoint) {
+    .container {
+      width: $breakpoint * 0.8;
+    }
+  }
+}

@@ -1,0 +1,131 @@
+/* 
+
+--------------- PARTIALS ---------------
+
+# Sass, tout comme le CSS, permet d'importer d'autres fichiers 
+  au moyen de la directive @use. Ce qui nous permet de découper
+  nos fichiers SCSS en plusieurs parties.
+# La convention demande que le nom commence par un underscore (_), 
+  nous l'appellerons donc "_body.scss". 
+
+*/
+
+@use "variables" as *;
+@use "mixin" as *;
+
+// Utilisation des variables du partial _variables.scss
+#couleur {
+  color: $couleur-primaire;
+}
+
+#cadre {
+  border: $bordure;
+}
+
+#texte {
+  font-size: $texte;
+}
+
+/* 
+
+--------------- NESTING (Imbrication) ---------------
+
+# L'un des grands intérêts de l'utilisation de Sass est la possibilité 
+  d'imbriquer les sélecteurs afin d'obtenir une structure très proche de 
+  celle de notre page HTML.
+  
+*/
+
+p {
+  font-size: $texte;
+  span {
+    // Ici nous indiquons que la balise span se situe dans la balise p
+    font-weight: bold;
+    a {
+      text-decoration: none;
+      &:hover {
+        /*
+        # Exemple css du hover : 
+          a:hover {
+            color: green;
+            }
+        # Dans ce cas précis, il n'y a pas d'espace avant ":hover". 
+          Nous allons donc devoir préciser à Sass que nous souhaitons "coller" 
+          le parent et l'enfant dans la structure imbriquée. Nous avons pour 
+          ce faire l'opérateur "&" qui nous permet de répondre à cette contrainte. 
+        # L'opérateur "&" permet de répéter le sélecteur parent, ici "a" 
+        
+        */
+        color: $couleur-primaire;
+      }
+    }
+  }
+}
+
+/* 
+
+--------------- MIXINS ---------------
+
+# Les "mixins" sont des ensembles de propriétés CSS 
+  qui peuvent être utilisées à plusieurs endroits de 
+  notre code dans des contextes différents.
+  Si nous avons des répétitions de propriétés, nous pouvons 
+  les rassembler sous la forme d'un "mixin" unique et donc 
+  réduire la taille de notre code et faciliter sa maintenance.
+# Nous utilisons la règle @include pour faire appel à nos mixins carre() et transform() 
+
+*/
+
+#carre1 {
+  // Nous appelons notre mixin avec un coté de 200px
+  @include carre(200px);
+  background: $couleur-primaire;
+  @include transform(translate(200px));
+}
+#carre2 {
+  // Nous appelons notre mixin avec un coté de 400px
+  @include carre(400px);
+  background: $couleur-carre2;
+}
+#carre3 {
+  // Nous appelons notre mixin avec un coté de 500px
+  @include carre(500px);
+  background: $couleur-carre3;
+}
+
+/* 
+
+--------------- EXTEND (Extension) ---------------
+
+# En complément des "mixins" nous avons les extensions, ou "extend", 
+  qui permettent de rassembler un certain nombre de propriétés fixes 
+  qui se répètent pour plusieurs sélecteurs CSS.
+# Nous utilisons la règle @extend pour faire appel à notre extension %centrer
+
+*/
+
+#carre4 {
+  // Nous appelons notre mixin avec un coté de 500px
+  position: relative;
+  @include carre(500px);
+  background: $couleur-primaire;
+  #carre5 {
+    // Nous appelons notre mixin avec un coté de 250px
+    @include carre(250px);
+    @extend %centrer;
+    background: $couleur-carre2;
+  }
+}
+
+#carre6 {
+  // Nous appelons notre mixin avec un coté de 800px
+  position: relative;
+  @include carre(800px);
+  background: $couleur-carre3;
+  #carre7 {
+    // Nous appelons notre mixin avec un coté de 500px
+    @include carre(350px);
+    @extend %centrer;
+    background: yellowgreen;
+  }
+}

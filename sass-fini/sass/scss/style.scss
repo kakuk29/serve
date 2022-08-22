@@ -1,0 +1,20 @@
+/* 
+
+--------------- PARTIALS ---------------
+
+# Sass, tout comme le CSS, permet d'importer d'autres fichiers 
+  au moyen de la directive @use.
+# Style.scss nous permet d'importer tous nos partials pour les 
+  compiler en un fichier style.css. Si nous indiquons pas dans 
+  le ficher styles.css les partials à utiliser, ils ne seront
+  jamais compilés. C'est un peu la maison mère de des autres 
+  fichiers scss.
+# Ce qui nous permet d'obtenir une syntaxe simple et courte, 
+  tout l'intérêt de Sass.
+
+*/
+
+@use "variables";
+@use "mixin";
+@use "body";
+@use "mediaqueries";

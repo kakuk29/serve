@@ -1,0 +1,43 @@
+/* 
+
+--------------- MIXINS ---------------
+
+# Les "mixins" sont des ensembles de propriétés CSS 
+  qui peuvent être utilisées à plusieurs endroits de 
+  notre code dans des contextes différents.
+  Si nous avons des répétitions de propriétés, nous pouvons 
+  les rassembler sous la forme d'un "mixin" unique et donc 
+  réduire la taille de notre code et faciliter sa maintenance.
+# Nous créons un mixin appelé carre qui prend une valeur dans $cote
+  et un autre appelé transform qui prend une valeur dans $propriete
+
+*/
+
+@mixin carre($cote) {
+  width: $cote;
+  height: $cote;
+}
+
+@mixin transform($propriete) {
+  -webkit-transform: $propriete;
+  -ms-transform: $propriete;
+  transform: $propriete;
+}
+
+/* 
+
+--------------- EXTEND (Extension) ---------------
+
+# En complément des "mixins" nous avons les extensions, ou "extend", 
+  qui permettent de rassembler un certain nombre de propriétés fixes 
+  qui se répètent pour plusieurs sélecteurs CSS.
+# Nous créeons une extension appelé %center 
+
+*/
+
+%centrer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
