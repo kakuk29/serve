@@ -40,11 +40,28 @@ p {
 }
 
 #carre2 {
-  @include carre(300px);
+  @include carre(400px);
   background-color: $secondary_color;
 }
 
 #carre3 {
-  @include carre(400px);
+  @include carre(500px);
   background-color: $tertiary_color;
+}
+
+//------------------------------EXTEND (extension)----------------------------------------------------------------------------------
+
+#carre1 , #carre2 , #carre3 , #carre4 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#carre1 {
+  position: relative;
+}
+
+#carre4 {
+  position: relative;
 }

@@ -33,15 +33,30 @@ p span a:hover {
 }
 
 #carre2 {
-  width: 300px;
-  height: 300px;
+  width: 400px;
+  height: 400px;
   background-color: #0b0c10;
 }
 
 #carre3 {
-  width: 400px;
-  height: 400px;
+  width: 500px;
+  height: 500px;
   background-color: #c5c6c7;
+}
+
+#carre1, #carre2, #carre3, #carre4 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#carre1 {
+  position: relative;
+}
+
+#carre4 {
+  position: relative;
 }
 
 /*# sourceMappingURL=style.css.map */
