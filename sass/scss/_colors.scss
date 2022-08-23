@@ -1,9 +1,13 @@
-@use "variables" as *;
+@use "variables" as v;
 
 #couleur {
-  color: $primary_color;
+  color: v.$primary_color;
 }
 
 #cadre {
-  border: $border solid $primary_color;
+  border: v.$border solid v.$primary_color;
+}
+
+#texte {
+  font-size: v.$texte;
 }
