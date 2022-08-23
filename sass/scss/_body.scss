@@ -1,0 +1,50 @@
+@use "variables" as v;
+
+#couleur {
+  color: v.$primary_color;
+}
+
+#cadre {
+  border: v.$border solid v.$primary_color;
+}
+
+#texte {
+  font-size: v.$texte;
+}
+
+//----------------------------------------------------------------------------------------------------------------
+
+p {
+  font-size: v.$texte;
+  span {
+    // ici nous indiquons que la balise se situe dans la balise p
+    border: v.$border solid v.$primary_color;
+    a {
+      text-decoration: none;
+      &:hover {
+        // l'opérateur & permet de répéter le selecteur parent, ici le selecteur a
+        color: v.$primary_color;
+      }
+    }
+  }
+}
+
+//------------------------------MIXINS----------------------------------------------------------------------------------
+
+#carre1 {
+  width: 300px;
+  height: 300px;
+  background-color: v.$primary_color;
+}
+
+#carre2 {
+  width: 400px;
+  height: 400px;
+  background-color: v.$secondary_color;
+}
+
+#carre3 {
+  width: 500px;
+  height: 500px;
+  background-color: v.$tertiary_color;
+}
