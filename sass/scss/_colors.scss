@@ -1,13 +1,24 @@
-@use "variables" as v;
+@use "variables" as *;
 
-#couleur {
-  color: v.$primary_color;
-}
+// #couleur {
+//   color: v.$primary_color;
+// }
 
-#cadre {
-  border: v.$border solid v.$primary_color;
-}
+// #cadre {
+//   border: v.$border solid v.$primary_color;
+// }
 
-#texte {
-  font-size: v.$texte;
+// #texte {
+//   font-size: v.$texte;
+// }
+
+p {
+  font-size: $texte;
+  span {
+    border: $border solid $primary_color;
+    a {
+      text-decoration: none;
+      color: $primary_color;
+    }
+  }
 }
