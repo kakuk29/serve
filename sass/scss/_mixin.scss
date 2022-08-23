@@ -4,3 +4,9 @@
   width: $cote;
   height: $cote;
 }
+
+@mixin tranform($proriete) {
+  -webkit-transform: $proriete;
+  -ms-transform: $proriete;
+  transform: $proriete;
+}

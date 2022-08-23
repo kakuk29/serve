@@ -13,7 +13,6 @@
   font-size: $texte;
 }
 
-
 //-----------------------------INBRICATION EN SCSS (Nesting)-----------------------------------------------------------------------------------
 
 p {
@@ -33,20 +32,19 @@ p {
 
 //------------------------------MIXINS----------------------------------------------------------------------------------
 
-// #carre1 {
-//   width: 300px;
-//   height: 300px;
-//   background-color: $primary_color;
-// }
+#carre1 {
+  // nous appelons notre mixin avec un coté de 200px
+  @include carre(200px);
+  background-color: $primary_color;
+  @include tranform(translate(200px));
+}
 
-// #carre2 {
-//   width: 400px;
-//   height: 400px;
-//   background-color: $secondary_color;
-// }
+#carre2 {
+  @include carre(300px);
+  background-color: $secondary_color;
+}
 
-// #carre3 {
-//   width: 500px;
-//   height: 500px;
-//   background-color: $tertiary_color;
-// }
+#carre3 {
+  @include carre(400px);
+  background-color: $tertiary_color;
+}
