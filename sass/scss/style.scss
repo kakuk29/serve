@@ -1,3 +1,5 @@
 // le compilateur recherchera automatiquement _variables.scss et _mixins.scss
-@use "variables" as *;
-@use "colors" as *;
+@use "variables";
+@use "mixin";
+@use "body";
+

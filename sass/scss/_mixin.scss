@@ -1,0 +1,12 @@
+// Nous créeons un mixin appelé carre qui prend une valeur dans $cote
+
+@mixin carre($cote) {
+  width: $cote;
+  height: $cote;
+}
+
+@mixin tranform($proriete) {
+  -webkit-transform: $proriete;
+  -ms-transform: $proriete;
+  transform: $proriete;
+}

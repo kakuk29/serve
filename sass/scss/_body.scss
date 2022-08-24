@@ -1,0 +1,67 @@
+@use "variables" as *;
+@use "mixin" as *;
+
+#couleur {
+  color: $primary_color;
+}
+
+#cadre {
+  border: $border solid $primary_color;
+}
+
+#texte {
+  font-size: $texte;
+}
+
+//-----------------------------INBRICATION EN SCSS (Nesting)-----------------------------------------------------------------------------------
+
+p {
+  font-size: $texte;
+  span {
+    // ici nous indiquons que la balise se situe dans la balise p
+    border: $border solid $primary_color;
+    a {
+      text-decoration: none;
+      &:hover {
+        // l'opérateur & permet de répéter le selecteur parent, ici le selecteur a
+        color: $primary_color;
+      }
+    }
+  }
+}
+
+//------------------------------MIXINS----------------------------------------------------------------------------------
+
+#carre1 {
+  // nous appelons notre mixin avec un coté de 200px
+  @include carre(200px);
+  background-color: $primary_color;
+  @include tranform(translate(200px));
+}
+
+#carre2 {
+  @include carre(400px);
+  background-color: $secondary_color;
+}
+
+#carre3 {
+  @include carre(500px);
+  background-color: $tertiary_color;
+}
+
+//------------------------------EXTEND (extension)----------------------------------------------------------------------------------
+
+#carre1 , #carre2 , #carre3 , #carre4 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#carre1 {
+  position: relative;
+}
+
+#carre4 {
+  position: relative;
+}

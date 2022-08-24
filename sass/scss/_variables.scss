@@ -1,11 +1,8 @@
 // LES VARIABLES
 
-$primary_color: #0b0c10;
-$texte: "Roboto", sans-serif;
-$border: 1px solid #0b0c10;
+$primary_color: #45a29e;
+$secondary_color: #0b0c10;
+$tertiary_color: #c5c6c7;
 
-p {
-  color: $primary_color;
-  font-family: $texte;
-  border: $border solid $primary_color;
-}
+$texte: 2rem;
+$border: 1px;

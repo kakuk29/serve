@@ -1,9 +1,0 @@
-@use "variables" as *;
-
-#couleur {
-  color: $primary_color;
-}
-
-#cadre {
-  border: $border solid $primary_color;
-}

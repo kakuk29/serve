@@ -1,17 +1,62 @@
-/* Error: Can't find stylesheet to import.
- *   ,
- * 3 | @use "colors" as *;
- *   | ^^^^^^^^^^^^^^^^^^
- *   '
- *   scss\style.scss 3:1  root stylesheet */
-
-body::before {
-  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
-      "Droid Sans Mono", monospace, monospace;
-  white-space: pre;
-  display: block;
-  padding: 1em;
-  margin-bottom: 1em;
-  border-bottom: 2px solid black;
-  content: "Error: Can't find stylesheet to import.\a   \2577 \a 3 \2502  @use \"colors\" as *;\d\a   \2502  ^^^^^^^^^^^^^^^^^^\a   \2575 \a   scss\\style.scss 3:1  root stylesheet";
+#couleur {
+  color: #45a29e;
 }
+
+#cadre {
+  border: 1px solid #45a29e;
+}
+
+#texte {
+  font-size: 2rem;
+}
+
+p {
+  font-size: 2rem;
+}
+p span {
+  border: 1px solid #45a29e;
+}
+p span a {
+  text-decoration: none;
+}
+p span a:hover {
+  color: #45a29e;
+}
+
+#carre1 {
+  width: 200px;
+  height: 200px;
+  background-color: #45a29e;
+  -webkit-transform: translate(200px);
+  -ms-transform: translate(200px);
+  transform: translate(200px);
+}
+
+#carre2 {
+  width: 400px;
+  height: 400px;
+  background-color: #0b0c10;
+}
+
+#carre3 {
+  width: 500px;
+  height: 500px;
+  background-color: #c5c6c7;
+}
+
+#carre1, #carre2, #carre3, #carre4 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#carre1 {
+  position: relative;
+}
+
+#carre4 {
+  position: relative;
+}
+
+/*# sourceMappingURL=style.css.map */
