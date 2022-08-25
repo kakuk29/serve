@@ -7,7 +7,8 @@ const pokemonsCtrl = require('../controllers/api');
 routeur.get("/", pokemonsCtrl.getAllPokemon);
 routeur.get("/:id", pokemonsCtrl.getOnePokemon);
 routeur.post("/", pokemonsCtrl.createPokemon);
-
+routeur.put("/:id", pokemonsCtrl.updatePokemon);
+routeur.delete("/:id", pokemonsCtrl.deletePokemon);
 
 // export
 module.exports = routeur;
