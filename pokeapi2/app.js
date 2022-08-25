@@ -3,7 +3,7 @@ const dotenv = require("dotenv");
 const morgan = require("morgan");
 const favicon = require("serve-favicon");
 
-const pokeapi = require("./routers/api");
+const pokeapi = require("./routes/api");
 
 dotenv.config();
 const app = express();
