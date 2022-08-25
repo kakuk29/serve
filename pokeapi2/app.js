@@ -23,6 +23,7 @@ app
   .use(favicon(__dirname + `/public/images/favicon.ico`))
   .use(morgan("dev"));
 
+
 app.get("/api/pokemon", (req, res) => {
   const pokemon = pokemons;
   const message = pokemon ? `il y a ${pokemons.length} pokemons` : `il n'y a pas de pokemons`;
@@ -43,7 +44,11 @@ app.post("/api/pokemon", (req, res) => {
   const message = `le pokemon ${pokemonCreated.name} a bien été créer`;
   res.json(success(message, pokemonCreated));
 });
+
+
+
 // start the server
 app.listen(app.get("port"), () => {
   console.log(`http://localhost:${app.get("port")}, press Ctrl+C to quit`);
 });
+
