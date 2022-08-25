@@ -38,9 +38,9 @@ exports.updatePokemon = (req, res) => {
 };
 
 exports.deletePokemon = (req, res) => {
-  const id = req.params.id;
-  pokemonsdeleted = pokemon.find((pokemon) => pokemon.id == id);
-  pokemon.filter((pokemon) => pokemon.id != id);
+  const id = parseInt(req.params.id);
+  const pokemonDeleted = pokemons.find(pokemon => pokemon.id == id);
+  pokemons.filter(pokemon => pokemon.id !== id);
   const message = `le pokemon ${pokemonDeleted.name} a bien été supprimer`;
   res.json(success(message, pokemonDeleted));
 }
