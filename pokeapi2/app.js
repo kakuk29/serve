@@ -1,6 +1,9 @@
 const express = require("express");
-let pokemons = require("./mock_pockemon");
 const dotenv = require("dotenv");
+const morgan = require("morgan");
+const favicon = require("serve-favicon");
+let pokemons = require("./mock_pockemon");
+
 const { success } = require("./helper.js");
 dotenv.config();
 const app = express();
@@ -13,6 +16,11 @@ app.set("port", process.env.PORT || 3000);
 //   console.log(`URL: ${req.url}`);
 //   next();
 // });
+
+app
+  .use(favicon(__dirname + "/favicon.ico"))
+  .use(morgan("dev"));
+
 
 app.get("/api/pokemon", (req, res) => {
   const pokemon = pokemons;
