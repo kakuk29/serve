@@ -6,7 +6,7 @@ const bodyParser = require("body-parser");
 const { Sequelize } = require("sequelize");
 
 // routes
-const pokeapi = require("./routes/api");
+const pokeapi = require("./src/routes/api");
 
 // initialize app
 dotenv.config();
