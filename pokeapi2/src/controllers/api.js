@@ -1,6 +1,6 @@
-let pokemons = require("../mock_pockemon");
-const { success } = require("../helper.js");
-const { getUniqueId } = require("../helper.js");
+let pokemons = require("../../mock_pockemon")
+const { success } = require("../../helper.js");
+const { getUniqueId } = require("../../helper.js");
 
 exports.getAllPokemon = (req, res) => {
   const pokemon = pokemons;
