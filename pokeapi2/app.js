@@ -3,7 +3,8 @@ const dotenv = require("dotenv");
 const morgan = require("morgan");
 const favicon = require("serve-favicon");
 const bodyParser = require("body-parser");
-const { Sequelize } = require("sequelize");
+const { Sequelize, DataTypes } = require("sequelize");
+const pokemonmodl = require("./src/models/pokemon");
 
 // routes
 const pokeapi = require("./src/routes/api");
@@ -34,9 +35,14 @@ sequelize
     console.log(`connected to ${process.env.DB_NAME}`);
   })
   .catch((err) => {
-    console.error("Unable to connect to the database:", err);
+    console.error(`impossible to connect to ${process.env.DB_NAME} : ${err}`);
   });
 
+const Pokemon = pokemonmodl(sequelize, DataTypes);
+
+sequelize.sync({ force: true })
+.then(_ => console.log('Database & tables created!'))
+  
 // middleware
 app
   .use(favicon(__dirname + `/public/images/favicon.ico`))
