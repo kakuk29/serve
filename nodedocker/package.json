@@ -1,5 +1,5 @@
 {
-  "name": "nodedocker",
+  "name": "nodocker",
   "version": "1.0.0",
   "description": "node et docker emsemble :O",
   "main": "app.js",
