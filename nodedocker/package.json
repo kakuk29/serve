@@ -1,0 +1,27 @@
+{
+  "name": "nodedocker",
+  "version": "1.0.0",
+  "description": "node et docker emsemble :O",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "#"
+  },
+  "keywords": [
+    "node",
+    "docker",
+    "api"
+  ],
+  "author": "damdam;",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  }
+}
