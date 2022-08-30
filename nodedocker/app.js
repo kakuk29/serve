@@ -1,14 +1,16 @@
 const express = require("express");
-const MongoClient = require('mongodb').MongoClient;
+const MongoClient = require("mongodb").MongoClient;
 const app = express();
 
 const url = "mongodb://mongodb:27017"; // ici on va utiliser le mongo téléchargé et exécuté depuis dockerhub.
 // mongodb (remplaçant localhost) est le lien déclaré dans docker-compose.yml
 
-let db ;
-MongoClient.connect(url, function(err, client) {
-  if (err) { console.log(err) }
-  db = client.db('animaux');
+let db;
+MongoClient.connect(url, function (err, client) {
+  if (err) {
+    console.log(err);
+  }
+  db = client.db("animaux");
 });
 
 app.get("/insertAnimal", async (req, res) => {
