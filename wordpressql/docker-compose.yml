@@ -1,31 +1,31 @@
-version: "3.1"
+version: "3"
 services:
   wordpress:
     image: wordpress
     ports:
       - "8080:80"
     environment:
-      - WORDPRESS_DB_HOST=db
-      - WORDPRESS_DB_USER=joni
-      - WORDPRESS_DB_PASSWORD=bigoud
-      - WORDPRESS_DB_NAME=wordp
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: joni
+      WORDPRESS_DB_PASSWORD: bigoud
+      WORDPRESS_DB_NAME: wordp
     volumes:
       - ./wordpress:/var/www/html
 
   db:
     image: mysql:5.7
     environment:
-      - MYSQL_ROOT_PASSWORD=bigoud
-      - MYSQL_DATABASE=wordp
-      - MYSQL_USER=joni
-      - MYSQL_PASSWORD=bigoud
+      MYSQL_DATABASE: wordp
+      MYSQL_USER: joni
+      MYSQL_PASSWORD: bigoud
+      MYSQL_ROOT_PASSWORD: 'bigoud'
     volumes:
       - ./db:/var/lib/mysql
     networks:
       - galaxie
 
 volumes:
-  wordpress:
+  wp:
   db:
 networks:
   galaxie:
