@@ -1,18 +1,19 @@
 version: "3.8"
 services:
   wordpress:
-      image: wordpress
-      ports:
-        - 80:80
-      environment:
-        - WORDPRESS_DB_HOST=db
-        - WORDPRESS_DB_USER=joni
-        - WORDPRESS_DB_PASSWORD=bigoud
-        - WORDPRESS_DB_NAME=wordp
-      networks:
-        - galaxie
-      volumes:
-        - wp:/var/www/html
+    image: wordpress
+    ports:
+      - 80:80
+    environment:
+      - WORDPRESS_DB_HOST=db
+      - WORDPRESS_DB_USER=joni
+      - WORDPRESS_DB_PASSWORD=bigoud
+      - WORDPRESS_DB_NAME=wordp
+    networks:
+      - galaxie
+    volumes:
+      - wp:/var/www/html
+
   db:
     image: mysql:5.7
     environment:
@@ -24,6 +25,7 @@ services:
       - galaxie
     volumes:
       - db:/var/lib/mysql
+
 volumes:
   db:
   wp:
