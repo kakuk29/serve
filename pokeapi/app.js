@@ -41,7 +41,7 @@ sequelize
 const Pokemon = pokemonmodl(sequelize, DataTypes);
 
 sequelize.sync({ force: true })
-.then(_ => console.log('Database & tables created!'))
+.then(_ => console.log('Database & tables created!')) 
   
 // middleware
 app
