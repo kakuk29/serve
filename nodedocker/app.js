@@ -5,6 +5,8 @@ const app = express();
 const url = "mongodb://mongodb:27017"; // ici on va utiliser le mongo téléchargé et exécuté depuis dockerhub.
 // mongodb (remplaçant localhost) est le lien déclaré dans docker-compose.yml
 
+port = 8080
+
 let db;
 MongoClient.connect(url, function (err, client) {
   if (err) {
@@ -16,13 +18,16 @@ MongoClient.connect(url, function (err, client) {
 app.get("/insertAnimal", async (req, res) => {
   try {
     await db
-      .collection("animaux")
-      .insertOne({ name: "JOJO", weight: 40, gender: "m" });
-  } catch (e) {
-    console.log(e);
+    .collection("animaux")
+    .insertOne({
+      nom: "chien",
+      age: 2,
+    });
+    res.send("ok");
+  } catch (err) {
+    res.send(err);
   }
-  res.redirect("animaux");
-});
+}),
 
 app.get("/", (req, res) => {
   res.send("Hello World!");
