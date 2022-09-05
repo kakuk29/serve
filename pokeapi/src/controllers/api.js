@@ -1,27 +1,19 @@
-let pokemons = require("../database/mock_pokemon")
-
-const success = (message, data) => {
-    return {
-        status: 200,
-        message: message,
-        data: data
-    }
-}
+let pokemons = require("../database/mock_pokemon");
 
 const getUniqueId = (array) => {
-    let id = 1
-    if (array.length > 0) {
-        id = array[array.length - 1].id + 1
-    }
-    return id
-}
+  let id = 1;
+  if (array.length > 0) {
+    id = array[array.length - 1].id + 1;
+  }
+  return id;
+};
 
 exports.getAllPokemon = (req, res) => {
   const pokemon = pokemons;
   const message = pokemon
     ? `il y a ${pokemons.length} pokemons`
     : `il n'y a pas de pokemons`;
-  res.json(success(message, pokemon));
+  res.json({ status: 200, message: message, data: pokemon });
 };
 
 exports.getOnePokemon = (req, res) => {
@@ -30,7 +22,7 @@ exports.getOnePokemon = (req, res) => {
   const message = pokemon
     ? `un pokemon a bien été trouver`
     : `Bruit de cricket`;
-  res.json(success(message, pokemon));
+  res.json({ status: 200, message: message, data: pokemon });
 };
 
 exports.createPokemon = (req, res) => {
@@ -38,7 +30,7 @@ exports.createPokemon = (req, res) => {
   const pokemonCreated = { ...req.body, ...{ id: id, created: new Date() } };
   pokemons.push(pokemonCreated);
   const message = `le pokemon ${pokemonCreated.name} a bien été créer`;
-  res.json(success(message, pokemonCreated));
+  res.json({ status: 200, message: message, data: pokemonCreated });
 };
 
 exports.updatePokemon = (req, res) => {
@@ -48,13 +40,13 @@ exports.updatePokemon = (req, res) => {
     return p.id == id ? pokemonUpdated : p;
   });
   const message = `le pokemon ${pokemonUpdated.name} a bien été mis à jour`;
-  res.json(success(message, pokemonUpdated));
+  res.json({ status: 200, message: message, data: pokemonUpdated });
 };
 
 exports.deletePokemon = (req, res) => {
   const id = parseInt(req.params.id);
-  const pokemonDeleted = pokemons.find(pokemon => pokemon.id == id);
-  pokemons.filter(pokemon => pokemon.id !== id);
+  const pokemonDeleted = pokemons.find((pokemon) => pokemon.id == id);
+  pokemons.filter((pokemon) => pokemon.id !== id);
   const message = `le pokemon ${pokemonDeleted.name} a bien été supprimer`;
-  res.json(success(message, pokemonDeleted));
-}
+  res.json({ status: 200, message: message, data: pokemonDeleted });
+};
