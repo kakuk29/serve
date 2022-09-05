@@ -17,7 +17,8 @@ const sequelize = new Sequelize(
       timezone: "Etc/GMT-2",
     },
     logging: false,
-  });
+  }
+);
 
 const Pokemon = pokemonmodl(sequelize, DataTypes);
 
