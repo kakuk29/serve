@@ -48,7 +48,7 @@ exports.deletePokemon = (req, res) => {
   const pokemonDeleted = pokemons.find((p) => p.id == id);
   pokemons = pokemons.filter((p) => p.id != id);
   const message = `le pokemon ${pokemonDeleted.name} a bien été supprimer`;
-  res.json({ status: 200, message: message, data: pokemons });
+  res.json({ status: 200, message: message, data: pokemonDeleted });
 };
 
 exports.deleteAllPokemon = (req, res) => {
