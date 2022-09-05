@@ -1,49 +1,49 @@
-const { Sequelize, DataTypes } = require("sequelize");
+const sequelize = require("sequelize");
 const dotenv = require("dotenv");
-const pokemonmodl = require("../models/pokemon");
-const pokemons = require("./mock_pokemon");
-
 dotenv.config();
 
-// database
-const sequelize = new Sequelize(
+const pokemonmdl = require("../models/pokemon");
+const pokemons = require("./mock_pokemon");
+const pokemon = require("../models/pokemon");
+
+const db = new sequelize(
   process.env.DB_NAME,
   process.env.DB_USER,
   process.env.DB_PASSWORD,
   {
     host: process.env.DB_HOST,
     dialect: "mariadb",
-    dialectOptions: {
-      timezone: "Etc/GMT-2",
-    },
     logging: false,
   }
 );
 
-const Pokemon = pokemonmodl(sequelize, DataTypes);
+const pokemonModel = pokemonmdl(db, sequelize);
 
-const initDb = () => {
-  return sequelize.sync({ force: true }).then(() => {
-    pokemons.map((pokemon) => {
-      Pokemon.create({
-        name: pokemon.name,
-        hp: pokemon.hp,
-        cp: pokemon.cp,
-        picture: pokemon.picture,
-        types: pokemon.types.join(),
-      }).then((pokemon) => console.log(pokemon.toJson()));
+const initDb = async () => {
+  try {
+    
+    await db.authenticate();
+    console.log(`${process.env.DB_NAME} database connected`);
+    await db.sync({ force: true });
+    console.log(`${process.env.DB_NAME} database synced`);
+    pokemon.map((pokemon) => {
+      pokemonModel
+        .create({
+          name: pokemons.name,
+          hp: pokemons.hp,
+          cp: pokemons.cp,
+          picture: pokemons.picture,
+          type: pokemons.type.join(),
+        })
+        .then((pokemon) => {
+          console.log(pokemon.toJSON());
+        });
     });
-    console.log(`Database & tables created!`);
-  });
+  } catch (error) {
+    console.error("Unable to connect to the database:", error);
+  }
 };
 
-module.exports = { initDb };
-
-// sequelize
-//   .authenticate()
-//   .then(() => {
-//     console.log(`connecter à ${process.env.DB_NAME}`);
-//   })
-//   .catch((err) => {
-//     console.error(`impossible to connect to ${process.env.DB_NAME} : ${err}`);
-//   });
+module.exports = {
+  initDb,
+};

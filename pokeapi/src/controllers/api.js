@@ -1,6 +1,20 @@
 let pokemons = require("../database/mock_pokemon")
-const { success } = require("../../helper.js");
-const { getUniqueId } = require("../../helper.js");
+
+const success = (message, data) => {
+    return {
+        status: 200,
+        message: message,
+        data: data
+    }
+}
+
+const getUniqueId = (array) => {
+    let id = 1
+    if (array.length > 0) {
+        id = array[array.length - 1].id + 1
+    }
+    return id
+}
 
 exports.getAllPokemon = (req, res) => {
   const pokemon = pokemons;
