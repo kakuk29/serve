@@ -4,7 +4,6 @@ dotenv.config();
 
 const pokemonmdl = require("../models/pokemon");
 const pokemons = require("./mock_pokemon");
-const pokemon = require("../models/pokemon");
 
 const db = new sequelize(
   process.env.DB_NAME,

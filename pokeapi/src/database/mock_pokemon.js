@@ -119,6 +119,16 @@ const pokemons = [
     types: ["Feu"],
     created: new Date(),
   },
+  {
+    id: 13,
+    name: "Feunard",
+    hp: 18,
+    cp: 7,
+    picture:
+      "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/038.png",
+    types: ["Feu"],
+    created: new Date(),
+  }
 ];
 
 module.exports = pokemons;
