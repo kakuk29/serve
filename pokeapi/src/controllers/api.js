@@ -1,4 +1,4 @@
-let pokemons = require("../../mock_pockemon")
+let pokemons = require("../database/mock_pokemon")
 const { success } = require("../../helper.js");
 const { getUniqueId } = require("../../helper.js");
 
