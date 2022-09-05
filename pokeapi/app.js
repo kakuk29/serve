@@ -8,10 +8,12 @@ const sequelize = require("./src/database/sequelize");
 // routes
 const pokeapi = require("./src/routes/api");
 
+
 // initialize app
 dotenv.config();
 const app = express();
 app.set("port", process.env.PORT || 3000);
+
 
 // middleware
 app
@@ -27,7 +29,6 @@ sequelize.initDb();
 app.listen(app.get("port"), () => {
   console.log(`http://localhost:${app.get("port")}, press Ctrl+C to quit`);
 });
-
 
 
 /*
