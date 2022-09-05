@@ -21,26 +21,21 @@ const pokemonModel = pokemonmdl(db, sequelize);
 
 const initDb = async () => {
   try {
-    
     await db.authenticate();
     console.log(`${process.env.DB_NAME} database connected`);
     await db.sync({ force: true });
     console.log(`${process.env.DB_NAME} database synced`);
-    pokemon.map((pokemon) => {
-      pokemonModel
-        .create({
-          name: pokemons.name,
-          hp: pokemons.hp,
-          cp: pokemons.cp,
-          picture: pokemons.picture,
-          type: pokemons.type.join(),
-        })
-        .then((pokemon) => {
-          console.log(pokemon.toJSON());
-        });
+    pokemons.map(async (pokemon) => {
+      await pokemonModel.create({
+        name: pokemon.name,
+        hp: pokemon.hp,
+        cp: pokemon.cp,
+        picture: pokemon.picture,
+        types: pokemon.types.join(),
+      });
     });
   } catch (error) {
-    console.error("Unable to connect to the database:", error);
+    console.error(` Error: ${error}`);
   }
 };
 
