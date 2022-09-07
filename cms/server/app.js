@@ -2,7 +2,6 @@ const express = require("express");
 const dotenv = require("dotenv");
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
-const sequelize = require("./src/database/sequelize");
 
 // routes
 const app = express();
@@ -11,11 +10,8 @@ const app = express();
 dotenv.config();
 app.set("port", process.env.PORT || 3000);
 
-// middleware
-app.use(morgan("dev")).use(bodyParser.json());
-
-// routes
-
+app
+    .use()
 
 // start server
 app.listen(app.get("port"), () => {

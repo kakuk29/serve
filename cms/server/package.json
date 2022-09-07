@@ -21,7 +21,8 @@
   "license": "ISC",
   "devDependencies": {
     "morgan": "^1.10.0",
-    "nodemon": "^2.0.19"
+    "nodemon": "^2.0.19",
+    "sequelize-cli": "^6.4.1"
   },
   "dependencies": {
     "body-parser": "^1.20.0",
