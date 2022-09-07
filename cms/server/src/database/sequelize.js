@@ -3,4 +3,6 @@ const dotenv = require("dotenv");
 
 dotenv.config();
 
-const db = new sequelize(
+const database = new sequelize(
+
+)
