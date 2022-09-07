@@ -1,0 +1,22 @@
+{
+  "name": "e_comerce",
+  "version": "1.0.0",
+  "description": "essais de site E_Commerce avec node et vue",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "#"
+  },
+  "keywords": [
+    "vue",
+    "vue/cli",
+    "node",
+    "express"
+  ],
+  "author": "damdam;",
+  "license": "ISC"
+}
